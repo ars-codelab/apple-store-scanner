@@ -28,7 +28,3 @@ jobs:
       run: node check-apple-inventory.js
       env:
         DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        EMAIL_API_KEY: ${{ secrets.EMAIL_API_KEY }}
-        EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        USER_AGENT: ${{ secrets.USER_AGENT }}
-        ACCEPT_LANGUAGE: ${{ secrets.ACCEPT_LANGUAGE }}
