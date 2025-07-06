@@ -1,30 +1,38 @@
 # .github/workflows/apple-monitor.yml
-name: Apple M4 MacBook Air Monitor
+name: Apple MacBook Air M4 Monitor
 
 on:
   schedule:
     # Run every 3 hours
     - cron: '0 */3 * * *'
-  # Allow manual trigger
-  workflow_dispatch:
+  workflow_dispatch: # Allow manual triggering
 
 jobs:
-  check-inventory:
+  monitor:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        node-version: '18'
-    
+        python-version: '3.11'
+        
     - name: Install dependencies
-      run: npm install
-    
-    - name: Check Apple Inventory
-      run: node check-apple-inventory.js
+      run: |
+        pip install requests beautifulsoup4 lxml
+        
+    - name: Run monitor script
       env:
         DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      run: python monitor.py
+      
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git diff --staged --quiet || git commit -m "Update product tracking data"
+        git push || echo "No changes to push"
