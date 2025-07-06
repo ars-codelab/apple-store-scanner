@@ -4,7 +4,7 @@ name: Apple MacBook Air M4 Monitor
 on:
   schedule:
     # Run every 3 hours
-    - cron: '0 */3 * * *'
+    #- cron: '0 */3 * * *'
   workflow_dispatch: # Allow manual triggering
 
 jobs:
