@@ -18,7 +18,7 @@ async function checkAppleInventory() {
     console.log('🔍 Analyzing page content...');
     
     // Look for M4 MacBook Air references
-    const m4MacBookAirRegex = /MacBook Air.*?M4|M4.*?MacBook Air/gi;
+    const m4MacBookAirRegex = /MacBook Air.*?M3|M3.*?MacBook Air/gi;
     const matches = html.match(m4MacBookAirRegex);
     
     // Check for product data in JSON format
@@ -26,8 +26,8 @@ async function checkAppleInventory() {
     const productMatches = [...html.matchAll(productDataRegex)];
     
     const m4Products = productMatches.filter(match => 
-      match[1].toLowerCase().includes('m4') || 
-      match[1].includes('M4')
+      match[1].toLowerCase().includes('m3') || 
+      match[1].includes('M3')
     );
 
     let availableProducts = [];
