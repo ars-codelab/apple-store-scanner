@@ -1,0 +1,17 @@
+{
+  "name": "apple-m4-monitor",
+  "version": "1.0.0",
+  "description": "Monitor Apple Japan refurbished M4 MacBook Air inventory",
+  "main": "check-apple-inventory.js",
+  "scripts": {
+    "start": "node check-apple-inventory.js",
+    "test": "node check-apple-inventory.js"
+  },
+  "keywords": ["apple", "macbook", "m4", "inventory", "monitor", "japan"],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}
